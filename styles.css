@@ -1,0 +1,238 @@
+
+       body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0;
+        background: url('image/temp_img.png') no-repeat center center fixed;
+        background-size: cover;
+        animation: fadeIn 3s ease-in-out;
+    }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+            text-align: center; /* Center-align the list */
+            margin: 20px 0; /* Add spacing around the footer list */
+        }
+        
+        /* Footer list item styling */
+        ul li {
+            display: inline-block; /* Keep the list item inline */
+        }
+        
+        /* Styling for the button link */
+        ul li a {
+            display: inline-block; /* Makes the link behave like a button */
+            padding: 10px 20px; /* Add space inside the button */
+            font-size: 16px; /* Adjust font size */
+            font-weight: bold; /* Make the text bold */
+            color: #fff; /* Button text color (white) */
+            background-color: #6a097e; /* Button background color (blue) */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+        }
+        
+        /* Hover effect for the button */
+        ul li a:hover {
+            background-color: #ad3bd7; /* Darker blue on hover */
+            transform: translateY(-3px); /* Slightly lift the button */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        }
+        
+        /* Optional: Adjust button style for smaller screens */
+        @media (max-width: 768px) {
+            ul li a {
+                padding: 8px 16px; /* Reduce padding for smaller devices */
+                font-size: 14px; /* Adjust font size */
+            }
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 60px auto 0;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .text-section {
+            padding: 20px;
+            width: 50%;
+            background-color: #f9f9f9;
+            animation: slideInLeft 1.5s ease-out;
+        }
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .text-section h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .text-section p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .image-section {
+            width: 50%;
+            animation: slideInRight 1.5s ease-out;
+        }
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .text-section, .image-section {
+                width: 100%;
+            }
+        }
+        .text-section {
+            padding: 30px;
+            width: 50%;
+            background-color: #f9f9f9;
+        }
+        .text-section h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .text-section p {
+            font-size: 18px;
+            color: #666;
+            line-height: 2;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .image-section {
+            width: 50%;
+        }
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .text-section, .image-section {
+                width: 100%;
+            }
+        }
+
+        header {
+            text-align: center;
+            color: #fff;
+            animation: fadeInDown s ease-in-out;
+        }
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        section {
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            color: rgb(255, 255, 255);
+            margin-bottom: 15px;
+        }
+
+         h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #007BFF;
+            font-weight: bold;
+        }
+        
+        footer {
+            padding: 5px;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        

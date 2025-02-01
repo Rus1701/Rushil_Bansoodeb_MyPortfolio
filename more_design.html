@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazine Flip</title>
+    <style>
+       .book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 6.5in; /* Adjust to your desired width */
+    height: 9in; /* Adjust to your desired height */
+    margin: 0 auto; /* Centers horizontally */
+    overflow: hidden;
+   
+}
+
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(44, 11, 51);
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Page styling */
+.book {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.page {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page img {
+    width: 100%;
+    height: 98%;
+}
+
+/* Arrow buttons */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+.arrow:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .book-container {
+        width: 100%;
+        height: auto;
+    }
+}
+
+nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: rgb(77, 178, 228);
+        }
+
+        .illustrator {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    text-align: center;
+    color: #fff;
+    background-color: #982ac0;
+    padding: 50px;
+    background-image: url('gallery/illustrator.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.illutratortext h1 {
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.illustrator img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.branding{
+    text-align: center;
+    max-width: 100%;
+    padding: 20px;
+    margin: 20px;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+.branding h1{
+    margin: 10px;
+    color: #fff;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 5vw);
+    grid-gap: 1.5rem; 
+  }
+  
+  .gallery__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+  }
+  
+  .gallery__item--1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    width: 100%;
+  
+    /** Alternative Syntax **/
+    /* grid-column: 1 / span 2;  */
+    /* grid-row: 1 / span 2; */
+  }
+  
+  .gallery__item--2 {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  
+    /** Alternative Syntax **/
+    /* grid-column: 3 / span 2;  */
+    /* grid-row: 1 / span 2; */
+  }
+  
+  .gallery__item--3 {
+    grid-column-start: 5;
+    grid-column-end: 9;
+    grid-row-start: 1;
+    grid-row-end: 10;
+   
+    
+  
+    /** Alternative Syntax **/
+    /* grid-column: 5 / span 4;
+    grid-row: 1 / span 5; */
+  }
+  
+  .gallery__item--4 {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 8;
+  
+    /** Alternative Syntax **/
+    /* grid-column: 1 / span 4;  */
+    /* grid-row: 3 / span 3; */
+  }
+  
+  .gallery__item--5 {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 8;
+    grid-row-end: 10;
+  
+    /** Alternative Syntax **/
+    /* grid-column: 1 / span 4; */
+    /* grid-row: 6 / span 3; */
+  }
+  
+  .gallery__item--6 {
+    grid-column-start: 5;
+    grid-column-end: 9;
+    grid-row-start: 6;
+    grid-row-end: 9;
+  
+    /** Alternative Syntax **/
+    /* grid-column: 5 / span 4; */
+    /* grid-row: 6 / span 3; */
+  }
+
+  .first_coffee__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.first_coffee {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.first_coffee img {
+    width: 91%;
+    height: auto;
+   padding: 50px;
+    margin: 10px;display: block;
+    text-align: center;
+
+}
+
+
+.gallery-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .modal:target {
+            display: flex;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .loc {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.loc h1 {
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.loc p{
+
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.locimages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.locimages img {
+    max-width: 30%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.locimages img:hover {
+    transform: scale(1.05);
+}
+    
+.winecity {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.winecity img {
+    max-width: 45%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.winecity img:hover {
+    transform: scale(1.20);
+}
+
+
+.wine h1{
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+    padding: 20px;
+}
+
+footer {
+            padding: 5px;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MyPortfolio.</div>
+        <ul>
+            <li><a href="portfolio.html">BACK</a></li>
+        </ul>
+    </nav>
+
+    <div class="illutratortext">
+        <h1>Editorial Design</h1>
+    </div>
+
+    <div class="book-container">
+        <button class="arrow left" id="prevPage">&#8592;</button>
+        <div class="book">
+            <div class="page active" id="page1"><img src="VIPER/Magazin.png" alt="Page 1"></div>
+            <div class="page" id="page2"><img src="VIPER/Magazin2.png" alt="Page 2"></div>
+            <div class="page" id="page3"><img src="VIPER/Magazin3.png" alt="Page 3"></div>
+            <div class="page" id="page4"><img src="VIPER/Magazin4.png" alt="Page 4"></div>
+            <div class="page" id="page5"><img src="VIPER/Magazin5.png" alt="Page 5"></div>
+            <div class="page" id="page6"><img src="VIPER/Magazin6.png" alt="Page 6"></div>
+            <div class="page" id="page7"><img src="VIPER/Magazin7.png" alt="Page 7"></div>
+            <div class="page" id="page8"><img src="VIPER/Magazin8.png" alt="Page 8"></div>
+            <div class="page" id="page9"><img src="VIPER/Magazin9.png" alt="Page 9"></div>
+            <div class="page" id="page10"><img src="VIPER/Magazin10.png" alt="Page 10"></div>
+            <div class="page" id="page11"><img src="VIPER/Magazin11.png" alt="Page 11"></div>
+            <div class="page" id="page12"><img src="VIPER/Magazin12.png" alt="Page 12"></div>
+            <div class="page" id="page13"><img src="VIPER/Magazin13.png" alt="Page 13"></div>
+            <div class="page" id="page14"><img src="VIPER/Magazin14.png" alt="Page 14"></div>
+            <div class="page" id="page15"><img src="VIPER/Magazin15.png" alt="Page 15"></div>
+            <div class="page" id="page16"><img src="VIPER/Magazin16.png" alt="Page 16"></div>
+            <div class="page" id="page17"><img src="VIPER/Magazin17.png" alt="Page 17"></div>
+            <div class="page" id="page18"><img src="VIPER/Magazin18.png" alt="Page 18"></div>
+        </div>
+    
+        <button class="arrow right" id="nextPage">&#8594;</button>
+    </div>
+
+    <div class="illutratortext">
+        <h1>Illustrator</h1>
+    </div>
+
+    <div class="illustrator">
+        <img src="gallery/Coffeelogo4.jpg" alt="Coffeelogo1">
+        <img src="gallery/Coffeelogo2.jpg" alt="Coffeelogo2">
+        <img src="gallery/Coffeelogo3.jpg" alt="Coffeelogo3">
+        <img src="gallery/Coffeelogo1.jpg" alt="Coffeelogo4">
+        <img src="gallery/Coffeelogo5.jpg" alt="Coffeelogo5">
+   </div>
+
+   <div class="branding">
+        <h1>Branding</h1>
+        <div class="gallery">
+            <figure class="gallery__item gallery__item--1">
+                <img src="gallery/the melody coffee logo.png" alt="Gallery image 1" class="gallery__img">
+            </figure>
+            <figure class="gallery__item gallery__item--2">
+                <img src="gallery/the melody coffee webbanner 2.png" alt="Gallery image 2" class="gallery__img">
+            </figure>
+            <figure class="gallery__item gallery__item--3">
+                <img src="gallery/the melody coffee poster.png" alt="Gallery image 3" class="gallery__img">
+            </figure>
+            <figure class="gallery__item gallery__item--4">
+                <img src="gallery/the melody coffee van.png" alt="Gallery image 4" class="gallery__img">
+            </figure>
+            <figure class="gallery__item gallery__item--5">
+                <img src="gallery/the melody coffee brand.png" alt="Gallery image 5" class="gallery__img">
+            </figure>
+            
+        </div>
+    </div>
+
+    <div class="first_coffee">
+        <img src="gallery/branding 2 img.png" alt="firstcoffee_branding">
+    </div>
+
+     <!-- Responsive -->
+
+     <div class="illutratortext">
+        <h1>Freestyle Posters</h1>
+    </div>
+
+
+    <div class="gallery-container">
+        <a href="#img9">
+            <img src="gallery/POSTER1.jpg" alt="Poster 1 Alternate">
+        </a>
+       
+        <a href="#img3">
+            <img src="gallery/Poster 2.jpg" alt="Poster 2">
+        </a>
+        <a href="#img4">
+            <img src="gallery/Poster 3.jpg" alt="Poster 3">
+        </a>
+        <a href="#img5">
+            <img src="gallery/Poster 4.jpg" alt="Poster 4">
+        </a>
+        <a href="#img6">
+            <img src="gallery/Poster 5.jpg" alt="Poster 5">
+        </a>
+        <a href="#img7">
+            <img src="gallery/Poster 6.jpg" alt="Poster 6">
+        </a>
+
+        <a href="#img12">
+            <img src="gallery/wine front cover.jpg" alt="Wine Front Cover">
+        </a>
+        <a href="#img1">
+            <img src="gallery/postal cover-desn156.jpg" alt="Postal Cover Design">
+        </a>
+    </div>
+
+    <!-- Just Poster -->
+
+    <div id="img9" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/POSTER1.jpg" alt="Poster 1 Alternate">
+    </div>
+   
+    <div id="img3" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/Poster 2.jpg" alt="Poster 2">
+    </div>
+    <div id="img4" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/Poster 3.jpg" alt="Poster 3">
+    </div>
+    <div id="img5" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/Poster 4.jpg" alt="Poster 4">
+    </div>
+    <div id="img6" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/Poster 5.jpg" alt="Poster 5">
+    </div>
+    <div id="img7" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/Poster 6.jpg" alt="Poster 6">
+    </div>
+    
+    <div id="img12" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/wine front cover.jpg" alt="Wine Front Cover">
+    </div>
+
+    <div id="img1" class="modal">
+        <a href="#" class="close">&times;</a>
+        <img src="gallery/postal cover-desn156.jpg" alt="Postal Cover Design">
+    </div>
+
+
+ <div class="loc">
+        <h1>LONDON CITY BRANDING</h1>
+        <p>T-SHIRT DESIGN</p>
+        <div class="locimages">
+            <img src="gallery/tshirt-1.png" alt="T-Shirt Design 1">
+            <img src="gallery/tshirt2.png" alt="T-Shirt Design 2">
+            <img src="gallery/tshirt3.png" alt="T-Shirt Design 3">
+        </div>
+        <p>UX/UI DESIGN</p>
+        <div class="locimages">
+            <img src="gallery/WebSite WireFrame Layout.png" alt="Website Wireframe 1">
+            <img src="gallery/WebSite WireFrame Layout – 2.png" alt="Website Wireframe 2">
+        </div>
+        </div>
+    
+    <div class="wine">
+            <h1>Wine City Brochure</h1>
+        </div>
+
+    <div class="winecity">
+        <img src="gallery/winecity front.png">
+        <img src="gallery/wine city back.png">
+    </div>
+
+    <footer>
+        <p>&copy; 2025 | Rushil Bansoodeb Portfolio</p>
+    </footer>
+      
+         
+
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const book = document.querySelector('.book');
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
+    let currentPage = 0;
+
+    const updateView = () => {
+        const totalPages = book.children.length;
+        book.style.transform = `translateX(-${currentPage * 100}%)`;
+        prevBtn.disabled = currentPage === 0;
+        nextBtn.disabled = currentPage === totalPages - 1;
+    };
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 0) currentPage--;
+        updateView();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < book.children.length - 1) currentPage++;
+        updateView();
+    });
+
+    updateView();
+});
+    </script>
+</body>
+</html>
